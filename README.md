@@ -1,2 +1,7 @@
-# qube-ui
-A modern open-source React component library with beautiful, customizable UI components.
+# Qube UI
+
+A modern open-source React component library.
+
+## Status
+
+🚧 Under development.
