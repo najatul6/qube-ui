@@ -16,6 +16,6 @@
     "react-dom": "^19.2.7",
     "tsup": "^8.5.1",
     "turbo": "^2.5.4",
-    "typescript": "^6.0.3"
+    "typescript": "5.9.2"
   }
 }
