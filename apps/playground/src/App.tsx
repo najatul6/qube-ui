@@ -1,11 +1,12 @@
 import { TapeMenu } from "@qube-ui/navigation";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <TapeMenu />
-    </div>
+    <TapeMenu defaultValue="home">
+      <TapeMenu.Item value="home">Home</TapeMenu.Item>
+      <TapeMenu.Item value="products">Products</TapeMenu.Item>
+      <TapeMenu.Item value="pricing">Pricing</TapeMenu.Item>
+      <TapeMenu.Item value="about">About</TapeMenu.Item>
+    </TapeMenu>
   );
 }
-
-export default App;
