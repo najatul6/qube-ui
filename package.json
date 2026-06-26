@@ -1,0 +1,17 @@
+{
+  "name": "qube-ui",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.8.0",
+    "prettier": "^3.5.0"
+  }
+}
