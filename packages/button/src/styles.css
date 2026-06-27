@@ -1,0 +1,64 @@
+.qube-button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 150ms ease;
+}
+
+.qube-button--sm {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.qube-button--md {
+  padding: 10px 16px;
+  font-size: 16px;
+}
+
+.qube-button--lg {
+  padding: 12px 20px;
+  font-size: 18px;
+}
+
+.qube-button--solid {
+  background: #2563eb;
+  color: white;
+}
+
+.qube-button--solid:hover {
+  background: #1d4ed8;
+}
+
+.qube-button--outline {
+  background: transparent;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+}
+
+.qube-button--ghost {
+  background: transparent;
+  color: #2563eb;
+}
+
+.qube-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.qube-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.qube-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.qube-button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.qube-button--loading {
+  cursor: wait;
+}

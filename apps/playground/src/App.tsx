@@ -1,22 +1,38 @@
-import { useState } from "react";
-import { TapeMenu } from "@qube-ui/navigation";
+import { Button } from "@qube-ui/button";
 
 export default function App() {
-  const [value, setValue] = useState("home");
-
-  const [show, setShow] = useState(true);
-
   return (
-    <>
-      <button onClick={() => setShow(!show)}>Toggle</button>
+    <div
+      style={{
+        display: "flex",
+        gap: 16,
+        padding: 40,
+        flexWrap: "wrap",
+      }}
+    >
+      <Button>Default</Button>
 
-      <TapeMenu defaultValue="home">
-        <TapeMenu.Item value="home">Home</TapeMenu.Item>
+      <Button variant="outline">Outline</Button>
 
-        {show && <TapeMenu.Item value="products">Products</TapeMenu.Item>}
+      <Button variant="ghost">Ghost</Button>
 
-        <TapeMenu.Item value="pricing">Pricing</TapeMenu.Item>
-      </TapeMenu>
-    </>
+      <Button size="sm">Small</Button>
+
+      <Button size="md">Medium</Button>
+
+      <Button size="lg">Large</Button>
+
+      <Button loading>Loading</Button>
+
+      <Button disabled>Disabled</Button>
+
+      <Button
+        onClick={() => {
+          console.log("Clicked");
+        }}
+      >
+        Click Me
+      </Button>
+    </div>
   );
 }

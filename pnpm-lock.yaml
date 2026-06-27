@@ -32,6 +32,9 @@ importers:
 
   apps/playground:
     dependencies:
+      '@qube-ui/button':
+        specifier: workspace:*
+        version: link:../../packages/button
       '@qube-ui/navigation':
         specifier: workspace:*
         version: link:../../packages/navigation
@@ -78,6 +81,15 @@ importers:
       vite:
         specifier: ^8.1.0
         version: 8.1.0(@types/node@24.13.2)(esbuild@0.27.7)
+
+  packages/button:
+    dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.2.7
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.7(react@19.2.7)
 
   packages/navigation:
     dependencies:
