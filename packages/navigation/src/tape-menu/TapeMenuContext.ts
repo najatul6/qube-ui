@@ -1,11 +1,14 @@
 import { createContext } from "react";
+import type { TapeMenuItemData } from "./TapeMenu.types";
 
 export interface TapeMenuContextValue {
   value?: string;
   setValue: (value: string) => void;
 
-  registerItem: (value: string) => void;
-  items: string[];
+  items: TapeMenuItemData[];
+
+  registerItem: (item: TapeMenuItemData) => void;
+  unregisterItem: (value: string) => void;
 }
 
 export const TapeMenuContext =
