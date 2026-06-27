@@ -25,6 +25,20 @@ export function TapeMenuItem({
     };
   }, [menu, value, disabled]);
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    switch (event.key) {
+      case "ArrowRight":
+        event.preventDefault();
+        menu.moveFocus(value, "next");
+        break;
+
+      case "ArrowLeft":
+        event.preventDefault();
+        menu.moveFocus(value, "prev");
+        break;
+    }
+  };
+
   return (
     <button
       ref={ref}
@@ -36,6 +50,7 @@ export function TapeMenuItem({
       className="qube-tape-menu-item"
       data-active={active}
       onClick={() => menu.setValue(value)}
+      onKeyDown={handleKeyDown}
     >
       {children}
     </button>
