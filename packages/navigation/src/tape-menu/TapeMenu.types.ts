@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode, RefObject } from "react";
 
 export interface TapeMenuProps {
   children: ReactNode;
@@ -11,6 +11,13 @@ export interface TapeMenuProps {
 
 export interface TapeMenuItemProps {
   children: ReactNode;
+
   value: string;
   disabled?: boolean;
+}
+
+export interface TapeMenuItemData {
+  value: string;
+  disabled: boolean;
+  ref: RefObject<HTMLButtonElement | null>;
 }
