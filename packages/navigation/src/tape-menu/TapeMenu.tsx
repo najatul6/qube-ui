@@ -37,11 +37,39 @@ export function TapeMenu({
     setItems((prev) => prev.filter((item) => item.value !== value));
   }, []);
 
+  const moveFocus = useCallback(
+    (currentValue: string, direction: "next" | "prev") => {
+      const enabledItems = items.filter((item) => !item.disabled);
+
+      const currentIndex = enabledItems.findIndex(
+        (item) => item.value === currentValue,
+      );
+
+      if (currentIndex === -1) return;
+
+      let nextIndex = currentIndex;
+
+      if (direction === "next") {
+        nextIndex = (currentIndex + 1) % enabledItems.length;
+      } else {
+        nextIndex =
+          (currentIndex - 1 + enabledItems.length) % enabledItems.length;
+      }
+
+      const nextItem = enabledItems[nextIndex];
+
+      setValue(nextItem.value);
+      nextItem.ref.current?.focus();
+    },
+    [items],
+  );
+
   return (
     <TapeMenuContext.Provider
       value={{
         value,
         setValue,
+        moveFocus,
         items,
         registerItem,
         unregisterItem,
