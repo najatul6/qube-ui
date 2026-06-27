@@ -11,7 +11,6 @@ export function TapeMenuItem({
 
   return (
     <button
-      type="button"
        className="qube-tape-menu-item"
        data-active={active}
       onClick={() => menu.setValue(value)}

@@ -32,6 +32,9 @@ importers:
 
   apps/playground:
     dependencies:
+      '@qube-ui/navigation':
+        specifier: workspace:*
+        version: link:../../packages/navigation
       react:
         specifier: ^19.2.7
         version: 19.2.7
@@ -42,9 +45,6 @@ importers:
       '@eslint/js':
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.5.0)
-      '@qube-ui/navigation':
-        specifier: workspace:*
-        version: link:../../packages/navigation
       '@types/node':
         specifier: ^24.13.2
         version: 24.13.2

@@ -1,5 +1,5 @@
 import { TapeMenu } from "@qube-ui/navigation";
-
+console.log(TapeMenu);
 export default function App() {
   return (
     <TapeMenu defaultValue="home">
