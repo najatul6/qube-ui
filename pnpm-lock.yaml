@@ -99,6 +99,18 @@ importers:
 
   packages/core: {}
 
+  packages/input:
+    dependencies:
+      '@qube-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      react:
+        specifier: ^19.0.0
+        version: 19.2.7
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.7(react@19.2.7)
+
   packages/navigation:
     dependencies:
       '@qube-ui/core':
