@@ -1,45 +1,38 @@
-import { Button } from "@qube-ui/button";
+import { Tabs } from "@qube-ui/tabs";
 
 export default function App() {
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: 16,
-        padding: 40,
-        flexWrap: "wrap",
-      }}
-    >
-      <Button>Default</Button>
+    <div style={{ padding: 40 }}>
+      <Tabs defaultValue="account">
+        <Tabs.List>
+          <Tabs.Trigger value="account">
+            Account
+          </Tabs.Trigger>
 
-      <Button variant="outline">Outline</Button>
+          <Tabs.Trigger value="password">
+            Password
+          </Tabs.Trigger>
 
-      <Button variant="ghost">Ghost</Button>
+          <Tabs.Trigger value="settings">
+            Settings
+          </Tabs.Trigger>
+        </Tabs.List>
 
-      <Button size="sm">Small</Button>
+        <Tabs.Content value="account">
+          <h2>Account</h2>
+          <p>Manage your account settings.</p>
+        </Tabs.Content>
 
-      <Button size="md">Medium</Button>
+        <Tabs.Content value="password">
+          <h2>Password</h2>
+          <p>Update your password.</p>
+        </Tabs.Content>
 
-      <Button size="lg">Large</Button>
-
-      <Button loading>Loading</Button>
-
-      <Button disabled>Disabled</Button>
-
-      <Button
-        onClick={() => {
-          console.log("Clicked");
-        }}
-      >
-        Click Me
-      </Button>
-      <Button leftIcon={<span>🚀</span>}>Deploy</Button>
-
-      <Button rightIcon={<span>→</span>}>Continue</Button>
-
-      <Button leftIcon={<span>💾</span>} variant="outline">
-        Save
-      </Button>
+        <Tabs.Content value="settings">
+          <h2>Settings</h2>
+          <p>General application settings.</p>
+        </Tabs.Content>
+      </Tabs>
     </div>
   );
 }

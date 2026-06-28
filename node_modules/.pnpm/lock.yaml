@@ -38,6 +38,9 @@ importers:
       '@qube-ui/navigation':
         specifier: workspace:*
         version: link:../../packages/navigation
+      '@qube-ui/tabs':
+        specifier: workspace:*
+        version: link:../../packages/tabs
       react:
         specifier: ^19.2.7
         version: 19.2.7
