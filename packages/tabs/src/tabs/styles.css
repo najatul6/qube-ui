@@ -1,3 +1,37 @@
-.qube-tabs-list {}
-.qube-tabs-trigger {}
-.qube-tabs-content {}
+.qube-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qube-tabs-list {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+.qube-tabs-trigger {
+  border: 0;
+  background: transparent;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.qube-tabs-trigger:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.qube-tabs-trigger[data-active="true"] {
+  background: #2563eb;
+  color: white;
+}
+
+.qube-tabs-content {
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
