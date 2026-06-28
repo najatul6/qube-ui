@@ -4,6 +4,20 @@
   cursor: pointer;
   font-weight: 500;
   transition: all 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.qube-button__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.qube-button__label {
+  display: inline-flex;
+  align-items: center;
 }
 
 .qube-button--sm {
