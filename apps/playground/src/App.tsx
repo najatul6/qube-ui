@@ -1,26 +1,39 @@
-import { Spinner } from "@qube-ui/spinner";
+import { Separator } from "@qube-ui/separator";
 
 export default function App() {
   return (
     <div
       style={{
-        display: "flex",
-        gap: 24,
-        alignItems: "center",
         padding: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 20,
       }}
     >
-      <Spinner />
+      <div>Profile</div>
 
-      <Spinner size="sm" />
+      <Separator />
 
-      <Spinner size="lg" />
+      <div>Settings</div>
 
-      <Spinner thickness="thin" />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 20,
+          height: 60,
+        }}
+      >
+        <span>Home</span>
 
-      <Spinner thickness="thick" />
+        <Separator orientation="vertical" />
 
-      <Spinner color="current" />
+        <span>About</span>
+
+        <Separator orientation="vertical" />
+
+        <span>Contact</span>
+      </div>
     </div>
   );
 }

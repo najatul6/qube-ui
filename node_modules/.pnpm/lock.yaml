@@ -47,6 +47,9 @@ importers:
       '@qube-ui/navigation':
         specifier: workspace:*
         version: link:../../packages/navigation
+      '@qube-ui/separator':
+        specifier: workspace:*
+        version: link:../../packages/separator
       '@qube-ui/spinner':
         specifier: workspace:*
         version: link:../../packages/spinner
@@ -148,6 +151,18 @@ importers:
         version: 19.2.7(react@19.2.7)
 
   packages/navigation:
+    dependencies:
+      '@qube-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      react:
+        specifier: ^19.0.0
+        version: 19.2.7
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.7(react@19.2.7)
+
+  packages/separator:
     dependencies:
       '@qube-ui/core':
         specifier: workspace:*

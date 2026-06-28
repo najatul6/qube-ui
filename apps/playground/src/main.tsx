@@ -5,6 +5,7 @@ import "@qube-ui/input/styles.css";
 import "@qube-ui/badge/styles.css";
 import "@qube-ui/avatar/styles.css";
 import "@qube-ui/spinner/styles.css";
+import "@qube-ui/separator/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";

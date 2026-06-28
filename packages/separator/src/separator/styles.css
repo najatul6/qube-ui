@@ -1,0 +1,14 @@
+.qube-separator {
+  flex-shrink: 0;
+  background: #e5e7eb;
+}
+
+.qube-separator--horizontal {
+  width: 100%;
+  height: 1px;
+}
+
+.qube-separator--vertical {
+  width: 1px;
+  align-self: stretch;
+}
