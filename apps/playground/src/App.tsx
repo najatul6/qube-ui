@@ -1,38 +1,55 @@
-import { Tabs } from "@qube-ui/tabs";
+import { Input } from "@qube-ui/input";
 
 export default function App() {
   return (
-    <div style={{ padding: 40 }}>
-      <Tabs defaultValue="account">
-        <Tabs.List>
-          <Tabs.Trigger value="account">
-            Account
-          </Tabs.Trigger>
+    <div
+      style={{
+        padding: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 20,
+        maxWidth: 400,
+      }}
+    >
+      <Input
+        label="Email"
+        placeholder="Enter your email"
+      />
 
-          <Tabs.Trigger value="password">
-            Password
-          </Tabs.Trigger>
+      <Input
+        label="Search"
+        placeholder="Search..."
+        leftIcon={<span>🔍</span>}
+      />
 
-          <Tabs.Trigger value="settings">
-            Settings
-          </Tabs.Trigger>
-        </Tabs.List>
+      <Input
+        label="Password"
+        type="password"
+        rightIcon={<span>👁️</span>}
+      />
 
-        <Tabs.Content value="account">
-          <h2>Account</h2>
-          <p>Manage your account settings.</p>
-        </Tabs.Content>
+      <Input
+        label="Username"
+        helperText="Only letters and numbers."
+      />
 
-        <Tabs.Content value="password">
-          <h2>Password</h2>
-          <p>Update your password.</p>
-        </Tabs.Content>
+      <Input
+        label="Email"
+        error
+        helperText="Email is required."
+      />
 
-        <Tabs.Content value="settings">
-          <h2>Settings</h2>
-          <p>General application settings.</p>
-        </Tabs.Content>
-      </Tabs>
+      <Input
+        label="Disabled"
+        disabled
+        placeholder="Disabled input"
+      />
+
+      <Input
+        label="Large"
+        size="lg"
+        placeholder="Large input"
+      />
     </div>
   );
 }

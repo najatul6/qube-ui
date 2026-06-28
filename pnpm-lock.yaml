@@ -35,6 +35,9 @@ importers:
       '@qube-ui/button':
         specifier: workspace:*
         version: link:../../packages/button
+      '@qube-ui/input':
+        specifier: workspace:*
+        version: link:../../packages/input
       '@qube-ui/navigation':
         specifier: workspace:*
         version: link:../../packages/navigation

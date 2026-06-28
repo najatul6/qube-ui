@@ -13,6 +13,7 @@
     "@qube-ui/tabs": "workspace:*",
     "@qube-ui/button": "workspace:*",
     "@qube-ui/navigation": "workspace:*",
+    "@qube-ui/input": "workspace:*",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
