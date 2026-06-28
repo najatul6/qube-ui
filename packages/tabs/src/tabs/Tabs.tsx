@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useControllableState } from "@qube-ui/core";
 import { TabsContext } from "./TabsContext";
 import type { TabsProps } from "./Tabs.types";
 
@@ -8,19 +8,11 @@ export function Tabs({
   defaultValue,
   onValueChange,
 }: TabsProps) {
-  const [internalValue, setInternalValue] = useState(defaultValue);
-
-  const isControlled = controlledValue !== undefined;
-
-  const value = isControlled ? controlledValue : internalValue;
-
-  const setValue = (nextValue: string) => {
-    if (!isControlled) {
-      setInternalValue(nextValue);
-    }
-
-    onValueChange?.(nextValue);
-  };
+  const [value, setValue] = useControllableState({
+    value: controlledValue,
+    defaultValue,
+    onChange: onValueChange,
+  });
 
   return (
     <TabsContext.Provider

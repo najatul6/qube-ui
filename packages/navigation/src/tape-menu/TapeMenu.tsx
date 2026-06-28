@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { useControllableState } from "@qube-ui/core";
 import { TapeMenuContext } from "./TapeMenuContext";
 import type { TapeMenuItemData, TapeMenuProps } from "./TapeMenu.types";
 
@@ -8,20 +9,13 @@ export function TapeMenu({
   defaultValue,
   onValueChange,
 }: TapeMenuProps) {
-  const [internalValue, setInternalValue] = useState(defaultValue);
-  const [items, setItems] = useState<TapeMenuItemData[]>([]);
-
-  const isControlled = controlledValue !== undefined;
-
-  const value = isControlled ? controlledValue : internalValue;
-
-  const setValue = (nextValue: string) => {
-    if (!isControlled) {
-      setInternalValue(nextValue);
-    }
-
-    onValueChange?.(nextValue);
-  };
+  
+  const [value, setValue] = useControllableState({
+  value: controlledValue,
+  defaultValue,
+  onChange: onValueChange,
+});
+const [items, setItems] = useState<TapeMenuItemData[]>([]);
 
   const registerItem = useCallback((item: TapeMenuItemData) => {
     setItems((prev) => {
@@ -61,7 +55,7 @@ export function TapeMenu({
       setValue(nextItem.value);
       nextItem.ref.current?.focus();
     },
-    [items],
+   [items, setValue]
   );
 
   return (

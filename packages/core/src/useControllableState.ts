@@ -11,14 +11,11 @@ export function useControllableState<T>({
   defaultValue,
   onChange,
 }: UseControllableStateProps<T>) {
-  const [internalValue, setInternalValue] =
-    useState(defaultValue);
+  const [internalValue, setInternalValue] = useState(defaultValue);
 
   const isControlled = value !== undefined;
 
-  const currentValue = isControlled
-    ? value
-    : internalValue;
+  const currentValue = isControlled ? value : internalValue;
 
   const setValue = (nextValue: T) => {
     if (!isControlled) {

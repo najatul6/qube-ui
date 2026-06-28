@@ -16,6 +16,9 @@
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "@qube-ui/core": "workspace:*"
+  },
   "scripts": {
     "build": "tsup"
   }
