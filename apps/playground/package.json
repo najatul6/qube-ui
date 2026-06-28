@@ -16,6 +16,7 @@
     "@qube-ui/input": "workspace:*",
     "@qube-ui/badge": "workspace:*",
     "@qube-ui/avatar": "workspace:*",
+    "@qube-ui/spinner": "workspace:*",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },

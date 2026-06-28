@@ -8,25 +8,30 @@ if (!name) {
   process.exit(1);
 }
 
+if (!/^[a-z0-9-]+$/.test(name)) {
+  console.error(
+    "❌ Package name must contain only lowercase letters, numbers, and hyphens.",
+  );
+  process.exit(1);
+}
+
 const pascalCase = name
   .split("-")
-  .map(
-    (word) => word.charAt(0).toUpperCase() + word.slice(1),
-  )
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
   .join("");
 
 const packageDir = path.join("packages", name);
 
 if (fs.existsSync(packageDir)) {
-  console.error(`Package "${name}" already exists.`);
+  console.error(`❌ Package "${name}" already exists.`);
   process.exit(1);
 }
 
-fs.mkdirSync(
-  path.join(packageDir, "src", name),
-  { recursive: true },
-);
+fs.mkdirSync(path.join(packageDir, "src", name), {
+  recursive: true,
+});
 
+// package.json
 fs.writeFileSync(
   path.join(packageDir, "package.json"),
   JSON.stringify(
@@ -61,9 +66,10 @@ fs.writeFileSync(
     },
     null,
     2,
-  ),
+  ) + "\n",
 );
 
+// tsconfig.json
 fs.writeFileSync(
   path.join(packageDir, "tsconfig.json"),
   `{
@@ -77,6 +83,7 @@ fs.writeFileSync(
 `,
 );
 
+// tsup.config.ts
 fs.writeFileSync(
   path.join(packageDir, "tsup.config.ts"),
   `import { defineConfig } from "tsup";
@@ -93,6 +100,16 @@ export default defineConfig({
 `,
 );
 
+// README.md
+fs.writeFileSync(
+  path.join(packageDir, "README.md"),
+  `# @qube-ui/${name}
+
+${pascalCase} component for Qube UI.
+`,
+);
+
+// src/index.ts
 fs.writeFileSync(
   path.join(packageDir, "src", "index.ts"),
   `import "./${name}/styles.css";
@@ -102,40 +119,81 @@ export type { ${pascalCase}Props } from "./${name}/${pascalCase}.types";
 `,
 );
 
+// Component
 fs.writeFileSync(
-  path.join(
-    packageDir,
-    "src",
-    name,
-    `${pascalCase}.tsx`,
-  ),
-  `export function ${pascalCase}() {
-  return <div>${pascalCase}</div>;
+  path.join(packageDir, "src", name, `${pascalCase}.tsx`),
+  `import { forwardRef } from "react";
+import { cn } from "@qube-ui/core";
+import type { ${pascalCase}Props } from "./${pascalCase}.types";
+
+export const ${pascalCase} = forwardRef<
+  HTMLDivElement,
+  ${pascalCase}Props
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "qube-${name}",
+        className,
+      )}
+      {...props}
+    />
+  );
+});
+
+${pascalCase}.displayName = "${pascalCase}";
+`,
+);
+
+// Types
+fs.writeFileSync(
+  path.join(packageDir, "src", name, `${pascalCase}.types.ts`),
+  `import type { HTMLAttributes } from "react";
+
+export interface ${pascalCase}Props
+  extends HTMLAttributes<HTMLDivElement> {}
+`,
+);
+
+// CSS
+fs.writeFileSync(
+  path.join(packageDir, "src", name, "styles.css"),
+  `.qube-${name} {
+
 }
 `,
 );
 
-fs.writeFileSync(
-  path.join(
-    packageDir,
-    "src",
-    name,
-    `${pascalCase}.types.ts`,
-  ),
-  `export interface ${pascalCase}Props {}
-`,
+// Update playground package.json
+const playgroundPackagePath = path.join(
+  "apps",
+  "playground",
+  "package.json",
 );
 
-fs.writeFileSync(
-  path.join(
-    packageDir,
-    "src",
-    name,
-    "styles.css",
-  ),
-  "",
-);
+if (fs.existsSync(playgroundPackagePath)) {
+  const playground = JSON.parse(
+    fs.readFileSync(playgroundPackagePath, "utf8"),
+  );
 
-console.log(
-  `✅ Created @qube-ui/${name}`,
-);
+  playground.devDependencies ??= {};
+
+  playground.devDependencies[`@qube-ui/${name}`] =
+    "workspace:*";
+
+  fs.writeFileSync(
+    playgroundPackagePath,
+    JSON.stringify(playground, null, 2) + "\n",
+  );
+}
+
+console.log(`
+✅ Successfully created @qube-ui/${name}
+
+Next steps:
+
+  pnpm install
+
+  pnpm --filter @qube-ui/${name} build
+`);

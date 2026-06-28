@@ -47,6 +47,9 @@ importers:
       '@qube-ui/navigation':
         specifier: workspace:*
         version: link:../../packages/navigation
+      '@qube-ui/spinner':
+        specifier: workspace:*
+        version: link:../../packages/spinner
       '@qube-ui/tabs':
         specifier: workspace:*
         version: link:../../packages/tabs

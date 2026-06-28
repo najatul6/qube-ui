@@ -1,37 +1,26 @@
-import { Avatar } from "@qube-ui/avatar";
+import { Spinner } from "@qube-ui/spinner";
 
 export default function App() {
   return (
     <div
       style={{
         display: "flex",
-        gap: 20,
-        padding: 40,
+        gap: 24,
         alignItems: "center",
+        padding: 40,
       }}
     >
-      <Avatar
-        src="https://i.pravatar.cc/150?img=1"
-        alt="User"
-        fallback="U"
-      />
+      <Spinner />
 
-      <Avatar fallback="NI" />
+      <Spinner size="sm" />
 
-      <Avatar
-        size="sm"
-        fallback="SM"
-      />
+      <Spinner size="lg" />
 
-      <Avatar
-        size="lg"
-        fallback="LG"
-      />
+      <Spinner thickness="thin" />
 
-      <Avatar
-        src="broken-image.jpg"
-        fallback="ER"
-      />
+      <Spinner thickness="thick" />
+
+      <Spinner color="current" />
     </div>
   );
 }

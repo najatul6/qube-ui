@@ -1,0 +1,52 @@
+.qube-spinner {
+  display: inline-block;
+
+  border-style: solid;
+
+  border-radius: 9999px;
+
+  animation: qube-spinner-spin 0.8s linear infinite;
+}
+
+@keyframes qube-spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.qube-spinner--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.qube-spinner--md {
+  width: 24px;
+  height: 24px;
+}
+
+.qube-spinner--lg {
+  width: 36px;
+  height: 36px;
+}
+
+.qube-spinner--thin {
+  border-width: 2px;
+}
+
+.qube-spinner--normal {
+  border-width: 3px;
+}
+
+.qube-spinner--thick {
+  border-width: 4px;
+}
+
+.qube-spinner--primary {
+  border-color: #2563eb;
+  border-top-color: transparent;
+}
+
+.qube-spinner--current {
+  border-color: currentColor;
+  border-top-color: transparent;
+}
