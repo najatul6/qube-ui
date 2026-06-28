@@ -156,6 +156,18 @@ importers:
         specifier: ^19.0.0
         version: 19.2.7(react@19.2.7)
 
+  packages/spinner:
+    dependencies:
+      '@qube-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      react:
+        specifier: ^19.0.0
+        version: 19.2.7
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.7(react@19.2.7)
+
   packages/tabs:
     dependencies:
       '@qube-ui/core':
