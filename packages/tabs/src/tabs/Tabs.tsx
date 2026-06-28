@@ -8,15 +8,11 @@ export function Tabs({
   defaultValue,
   onValueChange,
 }: TabsProps) {
-  const [internalValue, setInternalValue] =
-    useState(defaultValue);
+  const [internalValue, setInternalValue] = useState(defaultValue);
 
-  const isControlled =
-    controlledValue !== undefined;
+  const isControlled = controlledValue !== undefined;
 
-  const value = isControlled
-    ? controlledValue
-    : internalValue;
+  const value = isControlled ? controlledValue : internalValue;
 
   const setValue = (nextValue: string) => {
     if (!isControlled) {
@@ -33,7 +29,7 @@ export function Tabs({
         setValue,
       }}
     >
-      {children}
+      <div className="qube-tabs">{children}</div>
     </TabsContext.Provider>
   );
 }
