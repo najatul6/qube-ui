@@ -1,55 +1,32 @@
-import { Input } from "@qube-ui/input";
+import { Badge } from "@qube-ui/badge";
 
 export default function App() {
   return (
     <div
       style={{
-        padding: 40,
         display: "flex",
-        flexDirection: "column",
-        gap: 20,
-        maxWidth: 400,
+        gap: 16,
+        flexWrap: "wrap",
+        padding: 40,
       }}
     >
-      <Input
-        label="Email"
-        placeholder="Enter your email"
-      />
+      <Badge>Default</Badge>
 
-      <Input
-        label="Search"
-        placeholder="Search..."
-        leftIcon={<span>🔍</span>}
-      />
+      <Badge color="primary">Primary</Badge>
 
-      <Input
-        label="Password"
-        type="password"
-        rightIcon={<span>👁️</span>}
-      />
+      <Badge color="success">Success</Badge>
 
-      <Input
-        label="Username"
-        helperText="Only letters and numbers."
-      />
+      <Badge color="warning">Warning</Badge>
 
-      <Input
-        label="Email"
-        error
-        helperText="Email is required."
-      />
+      <Badge color="danger">Danger</Badge>
 
-      <Input
-        label="Disabled"
-        disabled
-        placeholder="Disabled input"
-      />
+      <Badge variant="outline">
+        Outline
+      </Badge>
 
-      <Input
-        label="Large"
-        size="lg"
-        placeholder="Large input"
-      />
+      <Badge size="sm">Small</Badge>
+
+      <Badge size="lg">Large</Badge>
     </div>
   );
 }
