@@ -33,6 +33,13 @@ export default function App() {
       >
         Click Me
       </Button>
+      <Button leftIcon={<span>🚀</span>}>Deploy</Button>
+
+      <Button rightIcon={<span>→</span>}>Continue</Button>
+
+      <Button leftIcon={<span>💾</span>} variant="outline">
+        Save
+      </Button>
     </div>
   );
 }
