@@ -1,32 +1,37 @@
-import { Badge } from "@qube-ui/badge";
+import { Avatar } from "@qube-ui/avatar";
 
 export default function App() {
   return (
     <div
       style={{
         display: "flex",
-        gap: 16,
-        flexWrap: "wrap",
+        gap: 20,
         padding: 40,
+        alignItems: "center",
       }}
     >
-      <Badge>Default</Badge>
+      <Avatar
+        src="https://i.pravatar.cc/150?img=1"
+        alt="User"
+        fallback="U"
+      />
 
-      <Badge color="primary">Primary</Badge>
+      <Avatar fallback="NI" />
 
-      <Badge color="success">Success</Badge>
+      <Avatar
+        size="sm"
+        fallback="SM"
+      />
 
-      <Badge color="warning">Warning</Badge>
+      <Avatar
+        size="lg"
+        fallback="LG"
+      />
 
-      <Badge color="danger">Danger</Badge>
-
-      <Badge variant="outline">
-        Outline
-      </Badge>
-
-      <Badge size="sm">Small</Badge>
-
-      <Badge size="lg">Large</Badge>
+      <Avatar
+        src="broken-image.jpg"
+        fallback="ER"
+      />
     </div>
   );
 }
