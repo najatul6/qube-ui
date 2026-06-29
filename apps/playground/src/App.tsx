@@ -5,7 +5,15 @@ export default function DialogDemo() {
     <Dialog>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
 
-      <Dialog.Content>Hello Qube UI</Dialog.Content>
+      <Dialog.Portal>
+        <Dialog.Overlay />
+
+        <Dialog.Content>
+          <h2>Hello Qube UI</h2>
+
+          <p>This is our Dialog.</p>
+        </Dialog.Content>
+      </Dialog.Portal>
     </Dialog>
   );
 }

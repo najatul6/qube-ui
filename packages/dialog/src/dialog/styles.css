@@ -1,3 +1,43 @@
-.qube-dialog {
+:root {
+  --qube-dialog-overlay: rgb(0 0 0 / 0.5);
+  --qube-dialog-background: #ffffff;
+  --qube-dialog-radius: 12px;
+  --qube-dialog-padding: 24px;
+  --qube-dialog-shadow:
+    0 20px 40px rgb(0 0 0 / 0.2);
+  --qube-dialog-width: 500px;
+}
 
+.qube-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--qube-dialog-overlay);
+}
+
+.qube-dialog-root {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  pointer-events: none;
+}
+
+.qube-dialog-content {
+  pointer-events: auto;
+
+  width: 100%;
+  max-width: var(--qube-dialog-width);
+
+  background: var(--qube-dialog-background);
+
+  border-radius: var(--qube-dialog-radius);
+
+  padding: var(--qube-dialog-padding);
+
+  box-shadow: var(--qube-dialog-shadow);
 }
