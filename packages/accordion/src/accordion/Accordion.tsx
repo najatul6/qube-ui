@@ -16,93 +16,96 @@ export function Accordion({
     onChange: onValueChange,
   });
 
-  const triggerRefs = useRef(
-    new Map<
+  const triggers = useRef<
+    Map<
       string,
       {
-        ref: HTMLButtonElement;
+        ref: HTMLButtonElement | null;
         disabled: boolean;
       }
-    >(),
+    >
+  >(new Map());
+
+  const registerTrigger = useCallback(
+    (
+      value: string,
+      ref: HTMLButtonElement | null,
+      disabled: boolean,
+    ) => {
+      if (!ref) {
+        triggers.current.delete(value);
+        return;
+      }
+
+      triggers.current.set(value, {
+        ref,
+        disabled,
+      });
+    },
+    [],
   );
+
+  const getEnabled = () =>
+    [...triggers.current.entries()].filter(
+      ([, item]) => !item.disabled,
+    );
+
+  const focusNext = useCallback((current: string) => {
+    const items = getEnabled();
+
+    const index = items.findIndex(
+      ([value]) => value === current,
+    );
+
+    if (index === -1) return;
+
+    items[(index + 1) % items.length][1].ref?.focus();
+  }, []);
+
+  const focusPrevious = useCallback(
+    (current: string) => {
+      const items = getEnabled();
+
+      const index = items.findIndex(
+        ([value]) => value === current,
+      );
+
+      if (index === -1) return;
+
+      items[
+        (index - 1 + items.length) % items.length
+      ][1].ref?.focus();
+    },
+    [],
+  );
+
+  const focusFirst = useCallback(() => {
+    getEnabled()[0]?.[1].ref?.focus();
+  }, []);
+
+  const focusLast = useCallback(() => {
+    const items = getEnabled();
+
+    items[items.length - 1]?.[1].ref?.focus();
+  }, []);
 
   const toggleItem = useCallback(
     (itemValue: string) => {
       if (type === "single") {
         setValue(value === itemValue ? "" : itemValue);
-
         return;
       }
 
       const values = Array.isArray(value) ? value : [];
 
-      if (values.includes(itemValue)) {
-        setValue(values.filter((v) => v !== itemValue));
-      } else {
-        setValue([...values, itemValue]);
-      }
+      setValue(
+        values.includes(itemValue)
+          ? values.filter((v) => v !== itemValue)
+          : [...values, itemValue],
+      );
     },
     [type, value, setValue],
   );
-
-  const registerTrigger = useCallback(
-    (value: string, ref: HTMLButtonElement | null, disabled: boolean) => {
-      if (ref) {
-        triggerRefs.current.set(value, {
-          ref,
-          disabled,
-        });
-      } else {
-        triggerRefs.current.delete(value);
-      }
-    },
-    [],
-  );
-
-  const getValues = () =>
-    Array.from(triggerRefs.current.entries())
-      .filter(([, item]) => !item.disabled)
-      .map(([value]) => value);
-
-  const focusNext = useCallback((current: string) => {
-    const values = getValues();
-
-    const index = values.indexOf(current);
-
-    if (index === -1) return;
-
-    const next = values[(index + 1) % values.length];
-
-    triggerRefs.current.get(next)?.ref.focus();
-  }, []);
-
-  const focusPrevious = useCallback((current: string) => {
-    const values = getValues();
-
-    const index = values.indexOf(current);
-
-    if (index === -1) return;
-
-    const prev = values[(index - 1 + values.length) % values.length];
-
-    triggerRefs.current.get(prev)?.ref.focus();
-  }, []);
-
-  const focusFirst = useCallback(() => {
-    const values = getValues();
-
-    if (!values.length) return;
-
-    triggerRefs.current.get(values[0])?.ref.focus();
-  }, []);
-
-  const focusLast = useCallback(() => {
-    const values = getValues();
-
-    if (!values.length) return;
-
-    triggerRefs.current.get(values[values.length - 1])?.ref.focus();
-  }, []);
 
   return (
     <AccordionContext.Provider
@@ -110,9 +113,7 @@ export function Accordion({
         type,
         value,
         toggleItem,
-
         registerTrigger,
-
         focusNext,
         focusPrevious,
         focusFirst,
@@ -123,3 +124,5 @@ export function Accordion({
     </AccordionContext.Provider>
   );
 }
+
+Accordion.displayName = "Accordion";

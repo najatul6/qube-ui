@@ -1,61 +1,60 @@
+:root {
+  --qube-accordion-border: #e5e7eb;
+  --qube-accordion-padding: 1rem;
+  --qube-accordion-radius: 8px;
+  --qube-accordion-duration: .25s;
+}
+
+.qube-accordion {
+  width: 100%;
+  border: 1px solid var(--qube-accordion-border);
+  border-radius: var(--qube-accordion-radius);
+  overflow: hidden;
+}
+
 .qube-accordion-item {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--qube-accordion-border);
 }
 
 .qube-accordion-trigger {
   width: 100%;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
   padding: 1rem;
-
-  background: transparent;
-
   border: 0;
-
+  background: transparent;
+  text-align: left;
   cursor: pointer;
-
   font: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qube-accordion-trigger--open {
+  font-weight: 600;
+}
+
+.qube-accordion-content-wrapper {
+  overflow: hidden;
+
+  transition: height .25s ease;
+}
+
+.qube-accordion-content {
+  padding: var(--qube-accordion-padding);
 }
 
 .qube-accordion-chevron {
-  transition: transform .2s ease;
+  transition:
+    height var(--qube-accordion-duration) ease;
 }
 
 .qube-accordion-chevron--open {
   transform: rotate(180deg);
 }
 
-.qube-accordion-content {
-  overflow: hidden;
-}
-
-.qube-accordion-content__inner {
-  overflow: hidden;
-  height: 0;
-  transition: height 200ms ease;
-  padding: 0 1rem;
-}
-
-
-.qube-accordion-trigger:focus {
-  outline: none;
-}
-
-.qube-accordion-trigger:focus-visible {
-  outline: 2px solid var(--qube-color-focus);
-  outline-offset: 2px;
-}
-
-.qube-accordion-content {
-  overflow: hidden;
-}
-
-
-.qube-accordion-content--open .qube-accordion-content__inner {
-  padding: 1rem;
+@media (prefers-reduced-motion: reduce) {
+  .qube-accordion-content-wrapper,
+  .qube-accordion-chevron {
+    transition: none;
+  }
 }

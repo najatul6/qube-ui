@@ -1,67 +1,86 @@
-import { useEffect, useRef } from "react";
+import {
+  useEffect,
+  useRef,
+} from "react";
 import { cn } from "@qube-ui/core";
 import { useAccordionContext } from "./AccordionContext";
 import { useAccordionItemContext } from "./AccordionItemContext";
 import type { AccordionTriggerProps } from "./Accordion.types";
 
-export function AccordionTrigger({ children }: AccordionTriggerProps) {
+export function AccordionTrigger({
+  children,
+}: AccordionTriggerProps) {
   const accordion = useAccordionContext();
   const item = useAccordionItemContext();
+
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    accordion.registerTrigger(item.value, ref.current, item.disabled);
+    accordion.registerTrigger(
+      item.value,
+      ref.current,
+      item.disabled,
+    );
 
-    return () => accordion.registerTrigger(item.value, null, item.disabled);
-  }, [item.value, item.disabled, accordion.registerTrigger]);
+    return () =>
+      accordion.registerTrigger(
+        item.value,
+        null,
+        item.disabled,
+      );
+  }, [accordion, item]);
 
   return (
     <button
       ref={ref}
-      id={item.triggerId}
+      id={`${item.id}-trigger`}
       type="button"
       disabled={item.disabled}
       aria-expanded={item.open}
-      aria-controls={item.contentId}
+      aria-controls={`${item.id}-content`}
       className={cn(
         "qube-accordion-trigger",
-        item.open && "qube-accordion-trigger--open",
+        item.open &&
+          "qube-accordion-trigger--open",
       )}
-      onClick={() => accordion.toggleItem(item.value)}
-      onKeyDown={(event) => {
-        switch (event.key) {
+      onClick={() =>
+        accordion.toggleItem(item.value)
+      }
+      onKeyDown={(e) => {
+        switch (e.key) {
           case "ArrowDown":
-            event.preventDefault();
+            e.preventDefault();
             accordion.focusNext(item.value);
             break;
 
           case "ArrowUp":
-            event.preventDefault();
+            e.preventDefault();
             accordion.focusPrevious(item.value);
             break;
 
           case "Home":
-            event.preventDefault();
+            e.preventDefault();
             accordion.focusFirst();
             break;
 
           case "End":
-            event.preventDefault();
+            e.preventDefault();
             accordion.focusLast();
             break;
         }
       }}
     >
-      <span>{children}</span>
+       <span>{children}</span>
 
-      <span
-        className={cn(
-          "qube-accordion-chevron",
-          item.open && "qube-accordion-chevron--open",
-        )}
-      >
-        ▼
-      </span>
+  <span
+    className={cn(
+      "qube-accordion-chevron",
+      item.open &&
+        "qube-accordion-chevron--open",
+    )}
+  >
+    ▼
+  </span>
     </button>
   );
 }

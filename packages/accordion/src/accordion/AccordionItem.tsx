@@ -1,7 +1,7 @@
-import { useId } from "react";
+import { AccordionItemContext } from "./AccordionItemContext";
 import { useAccordionContext } from "./AccordionContext";
 import type { AccordionItemProps } from "./Accordion.types";
-import { AccordionItemContext } from "./AccordionItemContext";
+import { useId } from "react";
 
 export function AccordionItem({
   value,
@@ -10,8 +10,6 @@ export function AccordionItem({
 }: AccordionItemProps) {
   const accordion = useAccordionContext();
   const id = useId();
-  const triggerId = `${id}-trigger`;
-  const contentId = `${id}-content`;
   const open = Array.isArray(accordion.value)
     ? accordion.value.includes(value)
     : accordion.value === value;
@@ -22,9 +20,7 @@ export function AccordionItem({
         value,
         disabled,
         open,
-        id,
-        triggerId,
-        contentId,
+        id
       }}
     >
       <div

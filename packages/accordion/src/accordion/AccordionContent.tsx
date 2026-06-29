@@ -1,5 +1,4 @@
-import { cn } from "@qube-ui/core";
-import { useEffect, useRef } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 import { useAccordionItemContext } from "./AccordionItemContext";
 import type { AccordionContentProps } from "./Accordion.types";
 
@@ -10,52 +9,27 @@ export function AccordionContent({
 
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const element = ref.current;
+  const [height, setHeight] = useState(0);
 
-    if (!element) return;
+  useLayoutEffect(() => {
+    if (!ref.current) return;
 
-    if (item.open) {
-      const height = element.scrollHeight;
-
-      element.style.height = "0px";
-
-      requestAnimationFrame(() => {
-        element.style.height = `${height}px`;
-      });
-
-      const handle = () => {
-        element.style.height = "auto";
-      };
-
-      element.addEventListener("transitionend", handle, {
-        once: true,
-      });
-    } else {
-      const height = element.scrollHeight;
-
-      element.style.height = `${height}px`;
-
-      requestAnimationFrame(() => {
-        element.style.height = "0px";
-      });
-    }
-  }, [item.open]);
+    setHeight(ref.current.scrollHeight);
+  }, [children]);
 
   return (
     <div
-      id={item.contentId}
+      id={`${item.id}-content`}
       role="region"
-      aria-labelledby={item.triggerId}
-      hidden={false}
-      className={cn(
-        "qube-accordion-content",
-        item.open && "qube-accordion-content--open",
-      )}
+      aria-labelledby={`${item.id}-trigger`}
+      className="qube-accordion-content-wrapper"
+      style={{
+        height: item.open ? height : 0,
+      }}
     >
       <div
         ref={ref}
-        className="qube-accordion-content__inner"
+        className="qube-accordion-content"
       >
         {children}
       </div>

@@ -1,0 +1,32 @@
+$ tsup
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.5.1
+[34mCLI[39m Using tsup config: E:\Qube Groth Team\qube-ui\packages\navigation\tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[34mCJS[39m Build start
+[32mCJS[39m [1mdist\index.cjs     [22m[32m4.62 KB[39m
+[32mCJS[39m [1mdist\index.css     [22m[32m572.00 B[39m
+[32mCJS[39m [1mdist\index.css.map [22m[32m1.01 KB[39m
+[32mCJS[39m [1mdist\index.cjs.map [22m[32m7.15 KB[39m
+[32mCJS[39m ⚡️ Build success in 870ms
+[32mESM[39m [1mdist\index.css     [22m[32m572.00 B[39m
+[32mESM[39m [1mdist\index.js      [22m[32m3.40 KB[39m
+[32mESM[39m [1mdist\index.css.map [22m[32m1.01 KB[39m
+[32mESM[39m [1mdist\index.js.map  [22m[32m7.05 KB[39m
+[32mESM[39m ⚡️ Build success in 1106ms
+[34mDTS[39m Build start
+src/tape-menu/TapeMenu.tsx(15,3): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[31mError: error occurred in dts build
+    at Worker.<anonymous> (E:\Qube Groth Team\qube-ui\node_modules\.pnpm\tsup@8.5.1_postcss@8.5.15_typescript@5.9.2\node_modules\tsup\dist\index.js:1545:26)
+    at Worker.emit (node:events:508:28)
+    at MessagePort.<anonymous> (node:internal/worker:331:53)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:845:20)
+[ELIFECYCLE] Command failed with exit code 1.
+    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)[39m
+[31mDTS[39m [31mBuild error[39m
+Terminate batch job (Y/N)? 

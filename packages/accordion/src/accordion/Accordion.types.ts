@@ -1,4 +1,4 @@
-import type { ReactNode, Dispatch, SetStateAction } from "react";
+import type { ReactNode } from "react";
 
 export interface AccordionProps {
   children: ReactNode;
@@ -12,28 +12,10 @@ export interface AccordionProps {
   onValueChange?: (value: string | string[]) => void;
 }
 
-export interface AccordionItemProps {
-  value: string;
-
-  disabled?: boolean;
-
-  children: ReactNode;
-}
-
-export interface AccordionTriggerProps {
-  children: ReactNode;
-}
-
-export interface AccordionContentProps {
-  children: ReactNode;
-}
-
 export interface AccordionContextValue {
   type: "single" | "multiple";
 
   value: string | string[];
-
-  id: string;
 
   toggleItem: (value: string) => void;
 
@@ -43,25 +25,32 @@ export interface AccordionContextValue {
     disabled: boolean,
   ) => void;
 
-  focusNext: (value: string) => void;
+  focusNext: (current: string) => void;
 
-  focusPrevious: (value: string) => void;
+  focusPrevious: (current: string) => void;
 
   focusFirst: () => void;
 
   focusLast: () => void;
 }
 
+export interface AccordionItemProps {
+  value: string;
+  disabled?: boolean;
+  children: ReactNode;
+}
+
 export interface AccordionItemContextValue {
   value: string;
-
   disabled: boolean;
-
   open: boolean;
-
   id: string;
+}
 
-  contentId: string;
+export interface AccordionTriggerProps {
+  children: React.ReactNode;
+}
 
-  triggerId: string;
+export interface AccordionContentProps {
+  children: React.ReactNode;
 }
