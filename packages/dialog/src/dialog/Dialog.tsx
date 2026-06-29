@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useControllableState } from "@qube-ui/core";
-
+import { DialogPortal } from "./DialogPortal";
 import { DialogContext } from "./DialogContext";
 import type { DialogProps } from "./Dialog.types";
 import { DialogTrigger } from "./DialogTrigger";
@@ -42,6 +42,7 @@ DialogRoot.displayName = "Dialog";
 type DialogComponent = typeof DialogRoot & {
   Trigger: typeof DialogTrigger;
   Content: typeof DialogContent;
+  Portal: typeof DialogPortal;
 };
 
 export const Dialog =
@@ -49,3 +50,4 @@ export const Dialog =
 
 Dialog.Trigger = DialogTrigger;
 Dialog.Content = DialogContent;
+Dialog.Portal = DialogPortal;
