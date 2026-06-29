@@ -10,6 +10,8 @@ export function AccordionItem({
 }: AccordionItemProps) {
   const accordion = useAccordionContext();
   const id = useId();
+  const triggerId = `${id}-trigger`;
+  const contentId = `${id}-content`;
   const open = Array.isArray(accordion.value)
     ? accordion.value.includes(value)
     : accordion.value === value;
@@ -20,7 +22,9 @@ export function AccordionItem({
         value,
         disabled,
         open,
-        id
+        id,
+        triggerId,
+        contentId,
       }}
     >
       <div

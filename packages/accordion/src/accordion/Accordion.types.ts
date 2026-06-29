@@ -33,6 +33,8 @@ export interface AccordionContextValue {
 
   value: string | string[];
 
+  id: string;
+
   toggleItem: (value: string) => void;
 
   registerTrigger: (
@@ -58,4 +60,8 @@ export interface AccordionItemContextValue {
   open: boolean;
 
   id: string;
+
+  contentId: string;
+
+  triggerId: string;
 }

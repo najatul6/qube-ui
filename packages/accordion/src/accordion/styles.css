@@ -35,5 +35,27 @@
 }
 
 .qube-accordion-content__inner {
+  overflow: hidden;
+  height: 0;
+  transition: height 200ms ease;
+  padding: 0 1rem;
+}
+
+
+.qube-accordion-trigger:focus {
+  outline: none;
+}
+
+.qube-accordion-trigger:focus-visible {
+  outline: 2px solid var(--qube-color-focus);
+  outline-offset: 2px;
+}
+
+.qube-accordion-content {
+  overflow: hidden;
+}
+
+
+.qube-accordion-content--open .qube-accordion-content__inner {
   padding: 1rem;
 }

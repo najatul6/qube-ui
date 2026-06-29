@@ -89,7 +89,11 @@ export function Accordion({
   }, []);
 
   const focusFirst = useCallback(() => {
-    getValues().length && triggerRefs.current.get(getValues()[0])?.ref.focus();
+    const values = getValues();
+
+    if (!values.length) return;
+
+    triggerRefs.current.get(values[0])?.ref.focus();
   }, []);
 
   const focusLast = useCallback(() => {

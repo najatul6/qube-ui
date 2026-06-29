@@ -13,16 +13,16 @@ export function AccordionTrigger({ children }: AccordionTriggerProps) {
     accordion.registerTrigger(item.value, ref.current, item.disabled);
 
     return () => accordion.registerTrigger(item.value, null, item.disabled);
-  }, [accordion, item.value]);
+  }, [item.value, item.disabled, accordion.registerTrigger]);
 
   return (
     <button
       ref={ref}
-      id={`${item.id}-trigger`}
+      id={item.triggerId}
       type="button"
       disabled={item.disabled}
       aria-expanded={item.open}
-      aria-controls={`${item.id}-content`}
+      aria-controls={item.contentId}
       className={cn(
         "qube-accordion-trigger",
         item.open && "qube-accordion-trigger--open",
