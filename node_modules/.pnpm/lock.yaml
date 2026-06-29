@@ -32,6 +32,9 @@ importers:
 
   apps/playground:
     dependencies:
+      '@qube-ui/accordion':
+        specifier: workspace:*
+        version: link:../../packages/accordion
       '@qube-ui/avatar':
         specifier: workspace:*
         version: link:../../packages/avatar
@@ -99,6 +102,18 @@ importers:
       vite:
         specifier: ^8.1.0
         version: 8.1.0(@types/node@24.13.2)(esbuild@0.27.7)
+
+  packages/accordion:
+    dependencies:
+      '@qube-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      react:
+        specifier: ^19.0.0
+        version: 19.2.7
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.7(react@19.2.7)
 
   packages/avatar:
     dependencies:

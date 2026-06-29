@@ -1,0 +1,39 @@
+.qube-accordion-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.qube-accordion-trigger {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 1rem;
+
+  background: transparent;
+
+  border: 0;
+
+  cursor: pointer;
+
+  font: inherit;
+}
+
+.qube-accordion-chevron {
+  transition: transform .2s ease;
+}
+
+.qube-accordion-chevron--open {
+  transform: rotate(180deg);
+}
+
+.qube-accordion-content {
+  overflow: hidden;
+}
+
+.qube-accordion-content__inner {
+  padding: 1rem;
+}

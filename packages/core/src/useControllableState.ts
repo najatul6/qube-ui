@@ -2,7 +2,7 @@ import { useState } from "react";
 
 interface UseControllableStateProps<T> {
   value?: T;
-  defaultValue?: T;
+  defaultValue: T;
   onChange?: (value: T) => void;
 }
 
@@ -11,11 +11,14 @@ export function useControllableState<T>({
   defaultValue,
   onChange,
 }: UseControllableStateProps<T>) {
-  const [internalValue, setInternalValue] = useState(defaultValue);
+  const [internalValue, setInternalValue] =
+    useState<T>(defaultValue);
 
   const isControlled = value !== undefined;
 
-  const currentValue = isControlled ? value : internalValue;
+  const currentValue = isControlled
+    ? value
+    : internalValue;
 
   const setValue = (nextValue: T) => {
     if (!isControlled) {

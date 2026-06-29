@@ -1,39 +1,47 @@
-import { Separator } from "@qube-ui/separator";
+import { Accordion } from "@qube-ui/accordion";
 
 export default function App() {
   return (
     <div
       style={{
-        padding: 40,
-        display: "flex",
-        flexDirection: "column",
-        gap: 20,
+        maxWidth: 600,
+        margin: "40px auto",
       }}
     >
-      <div>Profile</div>
+      <Accordion defaultValue="item-1">
+        <Accordion.Item value="item-1">
+          <Accordion.Trigger>
+            What is Qube UI?
+          </Accordion.Trigger>
 
-      <Separator />
+          <Accordion.Content>
+            Qube UI is an open source React component
+            library.
+          </Accordion.Content>
+        </Accordion.Item>
 
-      <div>Settings</div>
+        <Accordion.Item value="item-2">
+          <Accordion.Trigger>
+            Is it accessible?
+          </Accordion.Trigger>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 20,
-          height: 60,
-        }}
-      >
-        <span>Home</span>
+          <Accordion.Content>
+            Yes. Every component is designed with
+            accessibility in mind.
+          </Accordion.Content>
+        </Accordion.Item>
 
-        <Separator orientation="vertical" />
+        <Accordion.Item value="item-3">
+          <Accordion.Trigger>
+            Does it support TypeScript?
+          </Accordion.Trigger>
 
-        <span>About</span>
-
-        <Separator orientation="vertical" />
-
-        <span>Contact</span>
-      </div>
+          <Accordion.Content>
+            Yes, it's written in TypeScript from the
+            ground up.
+          </Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
     </div>
   );
 }
